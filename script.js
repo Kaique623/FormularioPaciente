@@ -22,6 +22,7 @@ function addComorbidade(){
     newInput.id = "inputComorbidade" + comorCount;
     newInput.style.gridRow = newRowCount;
     newInput.style.gridColumn = 1;
+    newInput.name = newInput.id;
 
     newRemoveButton = document.createElement("button");
     newRemoveButton.className = "roundButton";
@@ -43,25 +44,14 @@ function removeButton(id) {
     comorbidadeFrame.removeChild(document.getElementById("inputComorbidade" + (parseInt(id)- 1)));
     newRowCount--;
 
-    function alineInput(num) {
-        try {
-            let removeButton = document.getElementById("inputComorbidade" + parseInt(num));
-            removeButton.style.gridRow--;
-            console.log(num);
-            alineInput(num - 1);
-            if (newRowCount != 2){
-                addButton.style.gridRow = newRowCount;
-            }
-                
-        }
-        catch {
-            //pass
-            console.log("break");
-            addButton.style.gridRow = newRowCount;
-        }
-    }
+    let inputs = comorbidadeFrame.getElementsByTagName("input");
+    let removeButtons = comorbidadeFrame.getElementsByTagName("button")
 
-    alineInput(comorCount);
+    for (let i = 0; i < inputs.length; i++){
+        inputs[i].style.gridArea = i + 2 + " / 1";
+        removeButtons[i].style.gridRow = i + 1; 
+    } 
+    addButton.style.gridRow = inputs.length + 1;
 
     if (newRowCount != 2)
         addButton.gridRow--;
