@@ -1,0 +1,57 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="mainPage/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+        <div id="mainFrame">
+            <div id="formNome">
+                <label for="nomePaciente">Nome do Paciente:</label>
+                <input name="nomePaciente" id="nomePaciente" type="text"> 
+            </div>
+
+            <div id="formSexo">   
+                <label for="sexoPaciente">Sexo:</label>
+
+                <input type="radio" name="sexoRadio" id="masc" value="M">
+                <label>Masculino</label>
+
+                <input type="radio" name="sexoRadio" id="fem" value="F">
+                <label>Feminino</label>
+            </div>
+
+            <div id="formIdade">
+                <label for="idadePaciente">Idade do Paciente:</label>
+                <input name="idadePaciente" id="idadePac" type="number"> 
+            </div>
+
+            <div id="formComorbidade">
+                <label for="Comorbidade">Comorbidade:</label>
+                <input type="radio" name="comorbidade" id="comT" onclick="document.getElementById('comorbidadeFrame').style.visibility = 'visible'" value=1>
+                <label>Sim</label>
+                <input type="radio" name="comorbidade" id="comF" onclick="document.getElementById('comorbidadeFrame').style.visibility = 'hidden'" value=0>
+                <label>Não</label>
+            </div>
+
+
+            <div id="comorbidadeFrame" style="visibility: hidden;">
+                <p id="headerComorbidade" ><strong>Especificar Comorbidade</strong></p>
+                <input id="inputComorbidade1" name="inputComorbidade1">
+                <button id="addButton" onclick="addComorbidade()" class="roundButton">+</button>
+            </div>
+
+
+            <div id="confirmButtons">
+                <button class="roundButton" id="saveButton" onclick="saveInfo()">Salvar</button>
+                <button class="roundButton" id="redefButton">Redefinir</button>
+            </div>
+
+        </div>
+
+        <script src="mainPage/script.js"></script>
+        <script src="mainPage/data.js"></script>
+</body>
+</html>

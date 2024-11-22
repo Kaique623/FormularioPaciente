@@ -1,0 +1,54 @@
+* {
+    font: 1em sans-serif;
+}
+body {
+    background-color: #222432;
+    display: flex;
+    flex-wrap: wrap;
+}
+.frame {
+    display: grid;
+
+    background-color: #333363;
+    min-width: 260px;
+    max-width: max-content;
+    max-height: 300px;
+
+    border: solid 4px transparent;
+    border-radius: 30px;
+    margin: 30px;
+    padding: 15px;
+
+    color: white;
+}
+.framePaciente {
+    display: grid;
+    grid-template-columns: 25% 75%;
+    border: solid 1px #5959a8;
+    min-height: 45px;
+    margin: 3px;
+    align-content: center;
+}
+.framePaciente[name="none"]{
+    opacity: 0;
+    transition: 0.5 ease-out;
+}
+
+#buttonFrame {
+    justify-content: center;
+    align-content: center;
+}
+
+button {
+    border-radius: 30px;
+    align-items: left;
+}
+#pacientes {
+    min-width: fit-content;
+    min-height: fit-content;
+}
+ion-icon {
+    font-size: 30px;
+    align-self: center;
+    margin-left: 15px;
+}

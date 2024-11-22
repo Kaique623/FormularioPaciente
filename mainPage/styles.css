@@ -1,9 +1,12 @@
 * {
     font-family: sans-serif;
     margin: 5px;
+    color-scheme: dark;
 }
 body {
     background-color: #222432;
+    display: flex;
+    flex-direction: column;
 }
 
 #mainFrame {
@@ -20,7 +23,7 @@ body {
     border-radius: 30px;
 
     margin: 10px;
-    padding: 5px;
+    padding: 15px;
 
     color: white;
     color-scheme: dark;
@@ -72,5 +75,6 @@ body {
 #redefButton, #redefButton:active {
     background-color: #FF3131;
     width: 48%;
+    height: 110%;
     border: solid 2px black;
 }

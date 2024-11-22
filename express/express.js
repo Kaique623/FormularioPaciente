@@ -1,16 +1,24 @@
 const express = require('express')
 const path = require("path");
 const fs = require("fs");
-const exp = require('constants');
+const bodyparser = require("body-parser");
+
+const file = require("../pacientes.json");
+var nextId = file.nextId;
 
 const app = express()
 const port = 3000
 
+app.use(bodyparser.json({limit: '50tb'}));
 
 app.use(express.static("FormularioPaciente"))
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, './index.html'))
+  res.sendFile(path.join(__dirname, '../mainPage/index.html'))
+})
+
+app.get('/registros', (req, res) => {
+  res.sendFile(path.join(__dirname, '../mainPage/index.html'))
 })
 
 app.listen(port, () => {
@@ -23,10 +31,21 @@ app.use(express.urlencoded({
 }))
 
 app.post("/upload", function(req, res) {
-  content = {"Nome": req.body.nomePaciente, "Idade": req.body.idadePaciente, "Genero": req.body.sexoRadio, "Comorbidade": req.body.comorbidade}
+  console.log("Body:")
+  console.log(req.body)
+
+
+  if (!(nextId in file["cadastros"])){
+    file["cadastros"][nextId] = req.body;
+    nextId++;
+    file.nextId = nextId;
+    saveJson();
+  }
+  else 
+    console.log("Erro!\n Id Já existente!")
 })
 
-function saveJson(content){
-  fs.writeFileSync("FormularioPaciente/pacientes.json", JSON.stringify( content));
+function saveJson(){
+  fs.writeFileSync("FormularioPaciente/pacientes.json", JSON.stringify(file));
   console.log("Saved!");
 }
